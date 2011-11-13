@@ -1,0 +1,13 @@
+application: gsis-wsnp
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+- url: /
+  static_files: templates/home.html
+  upload: templates/home\.html
+  
+- url: /.*
+  script: main.py
+

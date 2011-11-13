@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css"/>
+<script type="text/javascript" language="javascript">
+	function go() {
+		var val = document.getElementById('afm').value;
+    	if (val){
+        	window.location.assign(window.location.href += '/');
+			window.location.assign(window.location.href += val);
+    	} else {
+			alert('Εισάγετε Α.Φ.Μ');
+		}
+	}
+	
+	function keyPressed(event) {
+		if (event.keyCode == 13) {     
+        	go();
+  		}
+	}
+</script>
+</head>
+<body OnLoad="document.getElementById('afm').focus();">
+<div class="container">
+	<div class="row" style="position:absolute; top:20%">
+		<div class="span4 offset3">
+			<h2>GSIS WS client</h2>
+			<p>
+				Ένας απλός client για το <a href="http://www.gsis.gr/wsnp.html">web service ανάκτησης στοιχείων
+				νομικών προσώπων με βάση τον ΑΦΜ</a> που παρέχει η ΓΓΠΣ.
+			</p>
+		</div>
+		<div class="span4">
+			<div class="form-stacked">
+				<label for="xlInput3">Α.Φ.Μ.</label>
+				<div class="input">
+					<input onkeyup="keyPressed(event)" class="xlarge span3" id="afm" name="xlInput3" size="30" type="text"/>
+				</div>
+				<button onClick="go()" class="btn small primary" style="margin-top: 10px;">OK</button>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
