@@ -5,14 +5,15 @@ from xml.etree import cElementTree
 from xml2Dict.xml2Dict import XmlDictConfig
 import os
 
-WSDL_URL = 'http://www1.gsis.gr/wsgsis/RgWsBasStoixN/RgWsBasStoixNSoapHttpPort?wsdl'
+WSDL_URL = 'http://www.gsis.gr/wsnp/RgWsBasStoixN_version1.wsdl'
+SERVICE_URL = 'https://www1.gsis.gr/wsgsis/RgWsBasStoixN/RgWsBasStoixNSoapHttpPort'
 NULL = "{'{http://www.w3.org/2001/XMLSchema-instance}nil': '1'}"
 RgWsBasStoixNRtUser_TYPE = 'ns0:RgWsBasStoixNRtUser'
 GenWsErrorRtUser_TYPE = 'ns0:GenWsErrorRtUser'
 
 class AfmHandler(RequestHandler):
     def get(self, afm):
-        client = Client(url = WSDL_URL, location = WSDL_URL, retxml = True)
+        client = Client(url = WSDL_URL, location = SERVICE_URL, retxml = True)
         # prepare the request
         pBasStoixNRec_out = client.factory.create(RgWsBasStoixNRtUser_TYPE)
         pBasStoixNRec_out.afm = ' '
