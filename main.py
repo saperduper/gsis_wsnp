@@ -5,7 +5,7 @@ from xml.etree import cElementTree
 from xml2Dict.xml2Dict import XmlDictConfig
 import os
 
-WSDL_URL = 'http://www.gsis.gr/wsnp/RgWsBasStoixN_version1.wsdl'
+WSDL_URL = 'https://www1.gsis.gr/wsgsis/RgWsBasStoixN/RgWsBasStoixNSoapHttpPort?wsdl'
 SERVICE_URL = 'https://www1.gsis.gr/wsgsis/RgWsBasStoixN/RgWsBasStoixNSoapHttpPort'
 NULL = "{'{http://www.w3.org/2001/XMLSchema-instance}nil': '1'}"
 RgWsBasStoixNRtUser_TYPE = 'ns0:RgWsBasStoixNRtUser'
