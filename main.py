@@ -32,13 +32,13 @@ class AfmHandler(RequestHandler):
         # check for errors
         error = dictionary.get('Body').get('rgWsBasStoixNResponse').get('pErrorRec_out')
         error_desc = error.get('errorDescr')
+
         # in case of no errors, error_desc is dict
         if type(error_desc) is unicode:
             template_values = {
                 'error_message': error_desc
             }
             path = os.path.join(os.path.dirname(__file__), 'templates/error.html')
-            self.response.out.write(template.render(path, template_values))
         else:
             # fetch the details
             details = dictionary.get('Body').get('rgWsBasStoixNResponse').get('pBasStoixNRec_out')
@@ -55,7 +55,9 @@ class AfmHandler(RequestHandler):
                 'doyDescr': details.get('doyDescr')
             }
             path = os.path.join(os.path.dirname(__file__), 'templates/result.html')
-            self.response.out.write(template.render(path, template_values))
+
+        content = template.render(path, template_values)
+        self.response.out.write(str(content.encode('utf-8')))
 
 app = WSGIApplication([
     (r'/(\d{9})', AfmHandler),
